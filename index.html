@@ -6,6 +6,7 @@
     <title>PayPal Dashboard - Invoice Branding</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@heroicons/react@2.0.18/24/solid/index.min.js"></script>
     <style>
         body {
@@ -111,6 +112,30 @@
                                     <div class="mt-2 font-medium">Classic</div>
                                 </div>
                             </button>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-gray-200">
+                            <h3 class="text-xl font-semibold mb-6">Select Font</h3>
+                            <div class="space-y-3">
+                                <button onclick="applyFont('Inter')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Inter'">
+                                    <span class="text-lg">Inter</span>
+                                </button>
+                                
+                                <button onclick="applyFont('Montserrat')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Montserrat'">
+                                    <span class="text-lg">Montserrat</span>
+                                </button>
+                                
+                                <button onclick="applyFont('Lato')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Lato'">
+                                    <span class="text-lg">Lato</span>
+                                </button>
+                                
+                                <button onclick="applyFont('Open Sans')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Open Sans'">
+                                    <span class="text-lg">Open Sans</span>
+                                </button>
+                                
+                                <button onclick="applyFont('Merriweather')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Merriweather'">
+                                    <span class="text-lg">Merriweather</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -229,9 +254,32 @@
             }
         };
 
+        let currentFont = 'Inter';
+
+        function applyFont(fontFamily) {
+            currentFont = fontFamily;
+            const invoice = document.getElementById('invoicePreview');
+            invoice.style.fontFamily = fontFamily;
+            
+            // Update font buttons to show active state
+            document.querySelectorAll('.font-button').forEach(button => {
+                const buttonText = button.querySelector('span').textContent.trim();
+                button.style.borderColor = buttonText === fontFamily 
+                    ? themes[currentTheme].primaryColor 
+                    : '#e5e7eb';
+            });
+        }
+
+        // Update the existing applyTheme function to preserve font selection
+        let currentTheme = 'professional';
+
         function applyTheme(themeName) {
+            currentTheme = themeName;
             const theme = themes[themeName];
             const invoice = document.getElementById('invoicePreview');
+            
+            // Preserve the current font when changing themes
+            invoice.style.fontFamily = currentFont;
             
             // Update theme buttons
             document.querySelectorAll('.theme-button').forEach(button => {
@@ -263,6 +311,9 @@
                 heading.style.color = theme.secondaryColor;
             });
         }
+
+        // Initialize with default font
+        applyFont('Inter');
 
         // Apply default theme on load
         applyTheme('professional');
