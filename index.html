@@ -85,7 +85,7 @@
             <div class="container px-4 py-8 max-w-7xl">
                 <h1 class="text-3xl font-semibold text-gray-800 mb-8">Invoice Branding</h1>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     <div class="theme-selector bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-semibold mb-6">Select Theme</h3>
                         <div class="space-y-4">
@@ -113,27 +113,60 @@
                                 </div>
                             </button>
                         </div>
+
                         <div class="mt-8 pt-8 border-t border-gray-200">
-                            <h3 class="text-xl font-semibold mb-6">Select Font</h3>
-                            <div class="space-y-3">
-                                <button onclick="applyFont('Inter')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Inter'">
-                                    <span class="text-lg">Inter</span>
-                                </button>
+                            <h3 class="text-xl font-semibold mb-6">Custom Theme</h3>
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Primary Color</label>
+                                    <input type="color" 
+                                           id="primaryColor" 
+                                           class="w-full h-10 p-1 rounded border cursor-pointer"
+                                           value="#2C3E50"
+                                           onchange="updateCustomTheme()">
+                                </div>
                                 
-                                <button onclick="applyFont('Montserrat')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Montserrat'">
-                                    <span class="text-lg">Montserrat</span>
-                                </button>
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Secondary Color</label>
+                                    <input type="color" 
+                                           id="secondaryColor" 
+                                           class="w-full h-10 p-1 rounded border cursor-pointer"
+                                           value="#34495E"
+                                           onchange="updateCustomTheme()">
+                                </div>
                                 
-                                <button onclick="applyFont('Lato')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Lato'">
-                                    <span class="text-lg">Lato</span>
-                                </button>
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Accent Color</label>
+                                    <input type="color" 
+                                           id="accentColor" 
+                                           class="w-full h-10 p-1 rounded border cursor-pointer"
+                                           value="#3498DB"
+                                           onchange="updateCustomTheme()">
+                                </div>
                                 
-                                <button onclick="applyFont('Open Sans')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Open Sans'">
-                                    <span class="text-lg">Open Sans</span>
-                                </button>
-                                
-                                <button onclick="applyFont('Merriweather')" class="font-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all text-left pl-4" style="font-family: 'Merriweather'">
-                                    <span class="text-lg">Merriweather</span>
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Font Family</label>
+                                    <select id="fontFamily" 
+                                            class="w-full p-2 border rounded"
+                                            onchange="updateCustomTheme()">
+                                        <option value="Inter, sans-serif">Inter</option>
+                                        <option value="Montserrat, sans-serif">Montserrat</option>
+                                        <option value="Merriweather, serif">Merriweather</option>
+                                        <option value="Lato, sans-serif">Lato</option>
+                                        <option value="Open Sans, sans-serif">Open Sans</option>
+                                    </select>
+                                </div>
+
+                                <button onclick="applyTheme('custom')" 
+                                        class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all mt-4">
+                                    <div class="space-y-2">
+                                        <div id="customThemePreview" class="flex space-x-1">
+                                            <div class="h-4 rounded flex-1" id="primaryPreview"></div>
+                                            <div class="h-4 rounded flex-1" id="secondaryPreview"></div>
+                                            <div class="h-4 rounded flex-1" id="accentPreview"></div>
+                                        </div>
+                                        <div class="mt-2 font-medium">Apply Custom Theme</div>
+                                    </div>
                                 </button>
                             </div>
                         </div>
@@ -224,6 +257,47 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-6">Payment Preview</h3>
+                        <div class="space-y-4">
+                            <div class="theme-transition rounded-md overflow-hidden">
+                                <button class="w-full py-3 px-4 bg-[#0070ba] hover:bg-[#003087] text-white font-medium rounded-md mb-2 flex items-center justify-center transition-colors">
+                                    <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" class="h-5 mr-2">
+                                    Pay with PayPal
+                                </button>
+
+                                <button class="w-full py-3 px-4 bg-black hover:bg-gray-800 text-white font-medium rounded-md mb-2 flex items-center justify-center transition-colors">
+                                    <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/>
+                                    </svg>
+                                    Pay with Venmo
+                                </button>
+
+                                <button class="w-full py-3 px-4 bg-white hover:bg-gray-50 text-gray-900 font-medium rounded-md border-2 flex items-center justify-center transition-colors">
+                                    <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/>
+                                    </svg>
+                                    Debit or Credit Card
+                                </button>
+                            </div>
+
+                            <div class="mt-6 border-t pt-4">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">Subtotal</span>
+                                    <span class="font-medium">$5,000.00</span>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-600">Discount (5%)</span>
+                                    <span class="text-gray-600">-$250.00</span>
+                                </div>
+                                <div class="flex justify-between font-semibold text-lg">
+                                    <span>Total</span>
+                                    <span>$4,750.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -243,34 +317,24 @@
                 secondaryColor: '#1ABC9C',
                 accentColor: '#E74C3C',
                 backgroundColor: '#FFFFFF',
-                fontFamily: 'Inter, sans-serif'
+                fontFamily: 'Montserrat, sans-serif'
             },
             classic: {
                 primaryColor: '#8E44AD',
                 secondaryColor: '#9B59B6',
                 accentColor: '#F1C40F',
                 backgroundColor: '#FFFFFF',
-                fontFamily: 'Inter, serif'
+                fontFamily: 'Merriweather, serif'
+            },
+            custom: {
+                primaryColor: '#2C3E50',
+                secondaryColor: '#34495E',
+                accentColor: '#3498DB',
+                backgroundColor: '#FFFFFF',
+                fontFamily: 'Inter, sans-serif'
             }
         };
 
-        let currentFont = 'Inter';
-
-        function applyFont(fontFamily) {
-            currentFont = fontFamily;
-            const invoice = document.getElementById('invoicePreview');
-            invoice.style.fontFamily = fontFamily;
-            
-            // Update font buttons to show active state
-            document.querySelectorAll('.font-button').forEach(button => {
-                const buttonText = button.querySelector('span').textContent.trim();
-                button.style.borderColor = buttonText === fontFamily 
-                    ? themes[currentTheme].primaryColor 
-                    : '#e5e7eb';
-            });
-        }
-
-        // Update the existing applyTheme function to preserve font selection
         let currentTheme = 'professional';
 
         function applyTheme(themeName) {
@@ -278,8 +342,8 @@
             const theme = themes[themeName];
             const invoice = document.getElementById('invoicePreview');
             
-            // Preserve the current font when changing themes
-            invoice.style.fontFamily = currentFont;
+            // Apply font from theme
+            invoice.style.fontFamily = theme.fontFamily;
             
             // Update theme buttons
             document.querySelectorAll('.theme-button').forEach(button => {
@@ -310,13 +374,70 @@
             headings.forEach(heading => {
                 heading.style.color = theme.secondaryColor;
             });
+            
+            // Apply theme to payment preview - fix the selector and add more styling
+            const paymentPreview = document.querySelector('.bg-white.rounded-lg.shadow-lg.p-6:last-child');
+            if (paymentPreview) {
+                // Style headings
+                paymentPreview.querySelectorAll('h3').forEach(heading => {
+                    heading.style.color = theme.primaryColor;
+                });
+                
+                // Style borders and text
+                paymentPreview.querySelectorAll('.border-t').forEach(element => {
+                    element.style.borderColor = theme.secondaryColor;
+                });
+                
+                // Style text
+                paymentPreview.querySelectorAll('.text-gray-600').forEach(element => {
+                    element.style.color = theme.secondaryColor;
+                });
+
+                // Style card button border
+                const cardButton = paymentPreview.querySelector('.border-2');
+                if (cardButton) {
+                    cardButton.style.borderColor = theme.secondaryColor;
+                }
+
+                // Apply font family
+                paymentPreview.style.fontFamily = theme.fontFamily;
+            }
         }
 
-        // Initialize with default font
-        applyFont('Inter');
-
-        // Apply default theme on load
+        // Initialize with default theme
         applyTheme('professional');
+
+        function updateCustomTheme() {
+            // Get current values from inputs
+            const primaryColor = document.getElementById('primaryColor').value;
+            const secondaryColor = document.getElementById('secondaryColor').value;
+            const accentColor = document.getElementById('accentColor').value;
+            const fontFamily = document.getElementById('fontFamily').value;
+            
+            // Update custom theme
+            themes.custom = {
+                primaryColor,
+                secondaryColor,
+                accentColor,
+                backgroundColor: '#FFFFFF',
+                fontFamily
+            };
+            
+            // Update preview colors
+            document.getElementById('primaryPreview').style.backgroundColor = primaryColor;
+            document.getElementById('secondaryPreview').style.backgroundColor = secondaryColor;
+            document.getElementById('accentPreview').style.backgroundColor = accentColor;
+            
+            // If custom theme is currently selected, apply changes immediately
+            if (currentTheme === 'custom') {
+                applyTheme('custom');
+            }
+        }
+
+        // Initialize custom theme preview
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCustomTheme();
+        });
     </script>
 </body>
 </html> 
