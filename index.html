@@ -3,19 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>PayPal Dashboard - Invoice Branding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@heroicons/react@2.0.18/24/solid/index.min.js"></script>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+        }
+        .theme-transition {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body>
-    <h1>Hello World!</h1>
+<body class="bg-gray-100">
+    <div class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal Logo" class="h-8">
+                </div>
+                <div class="flex items-center">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="w-64 bg-white shadow-lg h-[calc(100vh-4rem)] fixed">
+            <nav class="mt-5 px-2">
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md bg-blue-50 text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Dashboard
+                </a>
+
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Invoices
+                </a>
+
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Payments
+                </a>
+
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Analytics
+                </a>
+
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Customers
+                </a>
+
+                <a href="#" class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-1 ml-64">
+            <div class="container px-4 py-8 max-w-7xl">
+                <h1 class="text-3xl font-semibold text-gray-800 mb-8">Invoice Branding</h1>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="theme-selector bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-6">Select Theme</h3>
+                        <div class="space-y-4">
+                            <button onclick="applyTheme('professional')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div class="space-y-2">
+                                    <div class="h-4 rounded bg-[#2C3E50]"></div>
+                                    <div class="h-4 rounded bg-[#3498DB]"></div>
+                                    <div class="mt-2 font-medium">Professional</div>
+                                </div>
+                            </button>
+                            
+                            <button onclick="applyTheme('modern')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div class="space-y-2">
+                                    <div class="h-4 rounded bg-[#16A085]"></div>
+                                    <div class="h-4 rounded bg-[#E74C3C]"></div>
+                                    <div class="mt-2 font-medium">Modern</div>
+                                </div>
+                            </button>
+                            
+                            <button onclick="applyTheme('classic')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div class="space-y-2">
+                                    <div class="h-4 rounded bg-[#8E44AD]"></div>
+                                    <div class="h-4 rounded bg-[#F1C40F]"></div>
+                                    <div class="mt-2 font-medium">Classic</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div id="invoicePreview" class="theme-transition bg-white rounded-lg shadow-lg p-8">
+                            <div class="invoice-header border-b-2 pb-6 mb-6">
+                                <h2 class="text-2xl font-bold">INVOICE</h2>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div class="space-y-2">
+                                    <h3 class="text-lg font-semibold">From</h3>
+                                    <p class="text-gray-600">Your Company Name</p>
+                                    <p class="text-gray-600">123 Business Street</p>
+                                    <p class="text-gray-600">City, Country</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-lg font-semibold">To</h3>
+                                    <p class="text-gray-600">Client Name</p>
+                                    <p class="text-gray-600">456 Client Avenue</p>
+                                    <p class="text-gray-600">City, Country</p>
+                                </div>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="theme-transition">
+                                            <th class="py-3 px-4 text-left">Item</th>
+                                            <th class="py-3 px-4 text-left">Quantity</th>
+                                            <th class="py-3 px-4 text-left">Price</th>
+                                            <th class="py-3 px-4 text-left">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b theme-transition">
+                                            <td class="py-3 px-4">Service A</td>
+                                            <td class="py-3 px-4">1</td>
+                                            <td class="py-3 px-4">$100.00</td>
+                                            <td class="py-3 px-4">$100.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themes = {
+            professional: {
+                primaryColor: '#2C3E50',
+                secondaryColor: '#34495E',
+                accentColor: '#3498DB',
+                backgroundColor: '#FFFFFF',
+                fontFamily: 'Inter, sans-serif'
+            },
+            modern: {
+                primaryColor: '#16A085',
+                secondaryColor: '#1ABC9C',
+                accentColor: '#E74C3C',
+                backgroundColor: '#FFFFFF',
+                fontFamily: 'Inter, sans-serif'
+            },
+            classic: {
+                primaryColor: '#8E44AD',
+                secondaryColor: '#9B59B6',
+                accentColor: '#F1C40F',
+                backgroundColor: '#FFFFFF',
+                fontFamily: 'Inter, serif'
+            }
+        };
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            const invoice = document.getElementById('invoicePreview');
+            
+            // Update theme buttons
+            document.querySelectorAll('.theme-button').forEach(button => {
+                button.style.borderColor = 
+                    button.textContent.trim().toLowerCase() === themeName 
+                    ? theme.primaryColor 
+                    : '#e5e7eb';
+            });
+            
+            // Apply colors to header
+            const header = invoice.querySelector('.invoice-header');
+            header.style.borderBottomColor = theme.accentColor;
+            header.style.color = theme.primaryColor;
+            
+            // Apply colors to table header
+            const tableHeader = invoice.querySelector('thead tr');
+            tableHeader.style.backgroundColor = theme.primaryColor;
+            tableHeader.style.color = '#FFFFFF';
+            
+            // Apply colors to table rows
+            const tableRows = invoice.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                row.style.borderBottomColor = theme.secondaryColor;
+            });
+            
+            // Apply colors to headings
+            const headings = invoice.querySelectorAll('h3');
+            headings.forEach(heading => {
+                heading.style.color = theme.secondaryColor;
+            });
+        }
+
+        // Apply default theme on load
+        applyTheme('professional');
+    </script>
 </body>
 </html> 
