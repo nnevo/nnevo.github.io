@@ -117,7 +117,12 @@
                     <div class="lg:col-span-2">
                         <div id="invoicePreview" class="theme-transition bg-white rounded-lg shadow-lg p-8">
                             <div class="invoice-header border-b-2 pb-6 mb-6">
-                                <h2 class="text-2xl font-bold">INVOICE</h2>
+                                <div class="flex justify-between items-center">
+                                    <h2 class="text-2xl font-bold">INVOICE</h2>
+                                    <div class="flex items-center">
+                                        <img src="https://via.placeholder.com/150x50?text=Your+Logo" alt="Business Logo" class="h-12 object-contain"/>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="grid md:grid-cols-2 gap-8 mb-8">
@@ -135,7 +140,7 @@
                                 </div>
                             </div>
 
-                            <div class="overflow-x-auto">
+                            <div class="overflow-x-auto mb-8">
                                 <table class="w-full">
                                     <thead>
                                         <tr class="theme-transition">
@@ -147,13 +152,50 @@
                                     </thead>
                                     <tbody>
                                         <tr class="border-b theme-transition">
-                                            <td class="py-3 px-4">Service A</td>
+                                            <td class="py-3 px-4">Web Development</td>
                                             <td class="py-3 px-4">1</td>
-                                            <td class="py-3 px-4">$100.00</td>
-                                            <td class="py-3 px-4">$100.00</td>
+                                            <td class="py-3 px-4">$2,000.00</td>
+                                            <td class="py-3 px-4">$2,000.00</td>
+                                        </tr>
+                                        <tr class="border-b theme-transition">
+                                            <td class="py-3 px-4">UI/UX Design</td>
+                                            <td class="py-3 px-4">1</td>
+                                            <td class="py-3 px-4">$1,500.00</td>
+                                            <td class="py-3 px-4">$1,500.00</td>
+                                        </tr>
+                                        <tr class="border-b theme-transition">
+                                            <td class="py-3 px-4">Content Writing</td>
+                                            <td class="py-3 px-4">2</td>
+                                            <td class="py-3 px-4">$400.00</td>
+                                            <td class="py-3 px-4">$800.00</td>
+                                        </tr>
+                                        <tr class="border-b theme-transition">
+                                            <td class="py-3 px-4">SEO Setup</td>
+                                            <td class="py-3 px-4">1</td>
+                                            <td class="py-3 px-4">$700.00</td>
+                                            <td class="py-3 px-4">$700.00</td>
+                                        </tr>
+                                        <tr class="border-b theme-transition">
+                                            <td class="py-3 px-4 text-right" colspan="3">Subtotal</td>
+                                            <td class="py-3 px-4 font-medium">$5,000.00</td>
+                                        </tr>
+                                        <tr class="border-b theme-transition text-gray-600">
+                                            <td class="py-3 px-4 text-right" colspan="3">Discount (5%)</td>
+                                            <td class="py-3 px-4">-$250.00</td>
+                                        </tr>
+                                        <tr class="theme-transition font-semibold">
+                                            <td class="py-3 px-4 text-right" colspan="3">Total</td>
+                                            <td class="py-3 px-4">$4,750.00</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+
+                            <div class="mt-8 p-4 bg-gray-50 rounded-lg theme-transition">
+                                <h3 class="text-lg font-semibold mb-2">Notes</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Thank you for choosing our services. This invoice includes all items as discussed in our previous meetings and correspondence. All work will be completed according to the agreed timeline and specifications. Please note that payment is due within 30 days of invoice date, and we accept all major payment methods including PayPal, credit cards, and bank transfers.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -202,7 +244,7 @@
             // Apply colors to header
             const header = invoice.querySelector('.invoice-header');
             header.style.borderBottomColor = theme.accentColor;
-            header.style.color = theme.primaryColor;
+            header.querySelector('h2').style.color = theme.primaryColor;
             
             // Apply colors to table header
             const tableHeader = invoice.querySelector('thead tr');
