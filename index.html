@@ -88,28 +88,37 @@
                 <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     <div class="theme-selector bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-semibold mb-6">Select Theme</h3>
-                        <div class="space-y-4">
-                            <button onclick="applyTheme('professional')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
-                                <div class="space-y-2">
-                                    <div class="h-4 rounded bg-[#2C3E50]"></div>
-                                    <div class="h-4 rounded bg-[#3498DB]"></div>
-                                    <div class="mt-2 font-medium">Professional</div>
+                        <div class="space-y-3">
+                            <button onclick="applyTheme('professional')" class="theme-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div>
+                                    <div class="flex space-x-1 mb-2">
+                                        <div class="h-6 rounded flex-1 bg-[#2C3E50]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#34495E]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#3498DB]"></div>
+                                    </div>
+                                    <div class="font-medium">Professional</div>
                                 </div>
                             </button>
                             
-                            <button onclick="applyTheme('modern')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
-                                <div class="space-y-2">
-                                    <div class="h-4 rounded bg-[#16A085]"></div>
-                                    <div class="h-4 rounded bg-[#E74C3C]"></div>
-                                    <div class="mt-2 font-medium">Modern</div>
+                            <button onclick="applyTheme('modern')" class="theme-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div>
+                                    <div class="flex space-x-1 mb-2">
+                                        <div class="h-6 rounded flex-1 bg-[#16A085]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#1ABC9C]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#E74C3C]"></div>
+                                    </div>
+                                    <div class="font-medium">Modern</div>
                                 </div>
                             </button>
                             
-                            <button onclick="applyTheme('classic')" class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all">
-                                <div class="space-y-2">
-                                    <div class="h-4 rounded bg-[#8E44AD]"></div>
-                                    <div class="h-4 rounded bg-[#F1C40F]"></div>
-                                    <div class="mt-2 font-medium">Classic</div>
+                            <button onclick="applyTheme('classic')" class="theme-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all">
+                                <div>
+                                    <div class="flex space-x-1 mb-2">
+                                        <div class="h-6 rounded flex-1 bg-[#8E44AD]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#9B59B6]"></div>
+                                        <div class="h-6 rounded flex-1 bg-[#F1C40F]"></div>
+                                    </div>
+                                    <div class="font-medium">Classic</div>
                                 </div>
                             </button>
                         </div>
@@ -117,35 +126,37 @@
                         <div class="mt-8 pt-8 border-t border-gray-200">
                             <h3 class="text-xl font-semibold mb-6">Custom Theme</h3>
                             <div class="space-y-4">
-                                <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Primary Color</label>
-                                    <input type="color" 
-                                           id="primaryColor" 
-                                           class="w-full h-10 p-1 rounded border cursor-pointer"
-                                           value="#2C3E50"
-                                           onchange="updateCustomTheme()">
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Primary</label>
+                                        <input type="color" 
+                                               id="primaryColor" 
+                                               class="w-full h-8 p-0.5 rounded border cursor-pointer"
+                                               value="#2C3E50"
+                                               onchange="updateCustomTheme()">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Secondary</label>
+                                        <input type="color" 
+                                               id="secondaryColor" 
+                                               class="w-full h-8 p-0.5 rounded border cursor-pointer"
+                                               value="#34495E"
+                                               onchange="updateCustomTheme()">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Accent</label>
+                                        <input type="color" 
+                                               id="accentColor" 
+                                               class="w-full h-8 p-0.5 rounded border cursor-pointer"
+                                               value="#3498DB"
+                                               onchange="updateCustomTheme()">
+                                    </div>
                                 </div>
                                 
-                                <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Secondary Color</label>
-                                    <input type="color" 
-                                           id="secondaryColor" 
-                                           class="w-full h-10 p-1 rounded border cursor-pointer"
-                                           value="#34495E"
-                                           onchange="updateCustomTheme()">
-                                </div>
-                                
-                                <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Accent Color</label>
-                                    <input type="color" 
-                                           id="accentColor" 
-                                           class="w-full h-10 p-1 rounded border cursor-pointer"
-                                           value="#3498DB"
-                                           onchange="updateCustomTheme()">
-                                </div>
-                                
-                                <div class="space-y-2">
-                                    <label class="block text-sm font-medium text-gray-700">Font Family</label>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Font Family</label>
                                     <select id="fontFamily" 
                                             class="w-full p-2 border rounded"
                                             onchange="updateCustomTheme()">
@@ -158,7 +169,7 @@
                                 </div>
 
                                 <button onclick="applyTheme('custom')" 
-                                        class="theme-button w-full p-4 rounded-lg border-2 hover:shadow-md transition-all mt-4">
+                                        class="theme-button w-full p-3 rounded-lg border-2 hover:shadow-md transition-all">
                                     <div class="space-y-2">
                                         <div id="customThemePreview" class="flex space-x-1">
                                             <div class="h-4 rounded flex-1" id="primaryPreview"></div>
@@ -168,6 +179,56 @@
                                         <div class="mt-2 font-medium">Apply Custom Theme</div>
                                     </div>
                                 </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-200">
+                            <h3 class="text-xl font-semibold mb-6">Extract from Website</h3>
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">Website URL</label>
+                                    <div class="flex gap-2">
+                                        <input type="url" 
+                                               id="websiteUrl" 
+                                               placeholder="https://example.com"
+                                               class="flex-1 p-2 border rounded text-sm">
+                                        <button onclick="extractTheme()" 
+                                                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+                                            Extract
+                                        </button>
+                                    </div>
+                                    <p class="text-xs text-gray-500">Enter a website URL to extract its colors and fonts</p>
+                                </div>
+
+                                <div id="extractedTheme" class="hidden">
+                                    <div class="mb-4">
+                                        <h4 class="text-sm font-medium text-gray-700 mb-2">Extracted Colors</h4>
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <div class="space-y-1">
+                                                <div id="extractedPrimary" class="h-6 rounded"></div>
+                                                <span class="text-xs text-gray-500">Primary</span>
+                                            </div>
+                                            <div class="space-y-1">
+                                                <div id="extractedSecondary" class="h-6 rounded"></div>
+                                                <span class="text-xs text-gray-500">Secondary</span>
+                                            </div>
+                                            <div class="space-y-1">
+                                                <div id="extractedAccent" class="h-6 rounded"></div>
+                                                <span class="text-xs text-gray-500">Accent</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h4 class="text-sm font-medium text-gray-700 mb-2">Detected Font</h4>
+                                        <div id="extractedFont" class="p-2 bg-gray-50 rounded text-sm"></div>
+                                    </div>
+
+                                    <button onclick="applyExtractedTheme()" 
+                                            class="w-full p-3 rounded-lg border-2 hover:shadow-md transition-all">
+                                        <div class="font-medium">Apply Extracted Theme</div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -438,6 +499,76 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateCustomTheme();
         });
+
+        let extractedTheme = null;
+
+        async function extractTheme() {
+            const url = document.getElementById('websiteUrl').value;
+            if (!url) return;
+
+            try {
+                // Show loading state
+                const button = document.querySelector('button[onclick="extractTheme()"]');
+                const originalText = button.innerText;
+                button.innerText = 'Extracting...';
+                button.disabled = true;
+
+                // In a real implementation, this would be your backend endpoint
+                // For demo, we'll simulate an API call with random colors
+                await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API delay
+
+                // Simulate extracted colors (in production, these would come from your backend)
+                extractedTheme = {
+                    primaryColor: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+                    secondaryColor: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+                    accentColor: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+                    fontFamily: ['Inter', 'Montserrat', 'Merriweather'][Math.floor(Math.random() * 3)]
+                };
+
+                // Update the preview
+                document.getElementById('extractedPrimary').style.backgroundColor = extractedTheme.primaryColor;
+                document.getElementById('extractedSecondary').style.backgroundColor = extractedTheme.secondaryColor;
+                document.getElementById('extractedAccent').style.backgroundColor = extractedTheme.accentColor;
+                document.getElementById('extractedFont').innerText = extractedTheme.fontFamily;
+
+                // Show the extracted theme section
+                document.getElementById('extractedTheme').classList.remove('hidden');
+
+                // Reset button
+                button.innerText = originalText;
+                button.disabled = false;
+            } catch (error) {
+                alert('Failed to extract theme. Please try again.');
+                console.error(error);
+            }
+        }
+
+        function applyExtractedTheme() {
+            if (!extractedTheme) return;
+
+            // Update custom theme inputs with extracted values
+            document.getElementById('primaryColor').value = extractedTheme.primaryColor;
+            document.getElementById('secondaryColor').value = extractedTheme.secondaryColor;
+            document.getElementById('accentColor').value = extractedTheme.accentColor;
+            
+            // Update font selector
+            const fontSelect = document.getElementById('fontFamily');
+            const fontOption = Array.from(fontSelect.options).find(option => 
+                option.value === extractedTheme.fontFamily + ', sans-serif' || 
+                option.value === extractedTheme.fontFamily + ', serif'
+            );
+            
+            if (fontOption) {
+                fontSelect.value = fontOption.value;
+            } else {
+                // Fallback to Inter if the extracted font isn't in our list
+                fontSelect.value = 'Inter, sans-serif';
+            }
+
+            // Update and apply the theme
+            updateCustomTheme();
+            applyTheme('custom');
+        }
     </script>
 </body>
 </html> 
