@@ -234,6 +234,21 @@
                     </div>
 
                     <div class="lg:col-span-2">
+                        <!-- Tabs -->
+                        <div class="flex mb-4 border-b">
+                            <button onclick="switchPreview('invoice')" 
+                                    id="invoiceTab"
+                                    class="px-6 py-3 font-medium border-b-2 border-blue-600 text-blue-600">
+                                Invoice
+                            </button>
+                            <button onclick="switchPreview('email')" 
+                                    id="emailTab"
+                                    class="px-6 py-3 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                                Email
+                            </button>
+                        </div>
+
+                        <!-- Preview Containers -->
                         <div id="invoicePreview" class="theme-transition bg-white rounded-lg shadow-lg p-8">
                             <div class="invoice-header border-b-2 pb-6 mb-6">
                                 <div class="flex justify-between items-center">
@@ -315,6 +330,48 @@
                                 <p class="text-gray-600 leading-relaxed">
                                     Thank you for choosing our services. This invoice includes all items as discussed in our previous meetings and correspondence. All work will be completed according to the agreed timeline and specifications. Please note that payment is due within 30 days of invoice date, and we accept all major payment methods including PayPal, credit cards, and bank transfers.
                                 </p>
+                            </div>
+                        </div>
+
+                        <div id="emailPreview" class="theme-transition bg-white rounded-lg shadow-lg p-8 hidden">
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center border-b pb-4">
+                                    <div>
+                                        <h2 class="text-2xl font-bold mb-2">Invoice Ready</h2>
+                                        <p class="text-gray-600">From: Your Company Name</p>
+                                    </div>
+                                    <img src="https://via.placeholder.com/150x50?text=Your+Logo" alt="Business Logo" class="h-12 object-contain"/>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <p>Dear Client Name,</p>
+                                    
+                                    <p class="text-gray-600">
+                                        We hope this email finds you well. Your invoice #INV-2024-001 has been prepared and is ready for your review.
+                                    </p>
+
+                                    <p class="text-gray-600">
+                                        Total Amount: $4,750.00<br>
+                                        Due Date: March 15, 2024
+                                    </p>
+
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <p class="text-gray-600">
+                                            You can view your invoice and complete the payment through our secure payment portal. If you have any questions, please don't hesitate to contact us.
+                                        </p>
+                                    </div>
+
+                                    <button class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                        View Invoice & Pay
+                                    </button>
+
+                                    <p class="text-sm text-gray-500">
+                                        Thank you for your business!<br>
+                                        Your Company Name<br>
+                                        contact@yourcompany.com<br>
+                                        +1 (555) 123-4567
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -463,6 +520,29 @@
                 // Apply font family
                 paymentPreview.style.fontFamily = theme.fontFamily;
             }
+
+            const emailPreview = document.getElementById('emailPreview');
+            if (emailPreview && !emailPreview.classList.contains('hidden')) {
+                emailPreview.style.fontFamily = theme.fontFamily;
+                
+                // Style headings
+                emailPreview.querySelector('h2').style.color = theme.primaryColor;
+                
+                // Style text
+                emailPreview.querySelectorAll('.text-gray-600').forEach(element => {
+                    element.style.color = theme.secondaryColor;
+                });
+                
+                // Style button
+                const button = emailPreview.querySelector('button');
+                button.style.backgroundColor = theme.primaryColor;
+                
+                // Style background sections
+                emailPreview.querySelectorAll('.bg-gray-50').forEach(element => {
+                    element.style.backgroundColor = theme.backgroundColor;
+                    element.style.borderColor = theme.secondaryColor;
+                });
+            }
         }
 
         // Initialize with default theme
@@ -568,6 +648,32 @@
             // Update and apply the theme
             updateCustomTheme();
             applyTheme('custom');
+        }
+
+        function switchPreview(type) {
+            const invoicePreview = document.getElementById('invoicePreview');
+            const emailPreview = document.getElementById('emailPreview');
+            const invoiceTab = document.getElementById('invoiceTab');
+            const emailTab = document.getElementById('emailTab');
+
+            if (type === 'invoice') {
+                invoicePreview.classList.remove('hidden');
+                emailPreview.classList.add('hidden');
+                invoiceTab.classList.add('border-blue-600', 'text-blue-600');
+                invoiceTab.classList.remove('border-transparent', 'text-gray-500');
+                emailTab.classList.remove('border-blue-600', 'text-blue-600');
+                emailTab.classList.add('border-transparent', 'text-gray-500');
+            } else {
+                emailPreview.classList.remove('hidden');
+                invoicePreview.classList.add('hidden');
+                emailTab.classList.add('border-blue-600', 'text-blue-600');
+                emailTab.classList.remove('border-transparent', 'text-gray-500');
+                invoiceTab.classList.remove('border-blue-600', 'text-blue-600');
+                invoiceTab.classList.add('border-transparent', 'text-gray-500');
+            }
+
+            // Apply current theme to newly visible preview
+            applyTheme(currentTheme);
         }
     </script>
 </body>
